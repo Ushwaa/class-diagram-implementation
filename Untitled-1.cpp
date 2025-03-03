@@ -148,12 +148,12 @@ void viewProducts(const vector<Product>& products, ShoppingCart& cart) {
         cout << "Do you want to add another product? (Y/N): ";
         cin >> choice;
         while (cin.get() != '\n');
-        while (toupper(choice) != 'Y' && toupper(choice) != 'N') {
-            cout << "Invalid input. Please enter Y or N: ";
+        while (choice != 'Y' && choice != 'y' && choice != 'N' && choice != 'n') {
+            cout << "Invalid input. Please enter a valid choice (Y/N): ";
             cin >> choice;
             while (cin.get() != '\n');
         }
-    } while (toupper(choice) == 'Y');
+    } while (choice == 'Y' || choice == 'y');
 }
 
 void viewShoppingCart(ShoppingCart& cart, vector<Order>& orders, int& orderIDCounter) {
@@ -163,13 +163,8 @@ void viewShoppingCart(ShoppingCart& cart, vector<Order>& orders, int& orderIDCou
     cout << "Do you want to check out all the products? (Y/N): ";
     cin >> choice;
     while (cin.get() != '\n');
-    while (toupper(choice) != 'Y' && toupper(choice) != 'N') {
-        cout << "Invalid input. Please enter Y or N: ";
-        cin >> choice;
-        while (cin.get() != '\n');
-    }
 
-    if (toupper(choice) == 'Y') {
+    if (choice == 'Y' || choice == 'y') {
         cart.checkout(orders, orderIDCounter);
     }
 }
